@@ -1,0 +1,36 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "727c22dc-7954-4751-a213-98666a8fb4ab": {
+      "ProjectGuid": "727c22dc-7954-4751-a213-98666a8fb4ab",
+      "DisplayName": "Application",
+      "ColorIndex": 0
+    },
+    "8385c925-f019-4855-aa42-fd94ee11081a": {
+      "ProjectGuid": "8385c925-f019-4855-aa42-fd94ee11081a",
+      "DisplayName": "Domain",
+      "ColorIndex": 1
+    },
+    "600a76dd-cbfd-4fe0-9e77-b24c11edb52b": {
+      "ProjectGuid": "600a76dd-cbfd-4fe0-9e77-b24c11edb52b",
+      "DisplayName": "Infrastructure",
+      "ColorIndex": 2
+    },
+    "0ab88561-60ca-40bc-8b4a-b9a06bd3c776": {
+      "ProjectGuid": "0ab88561-60ca-40bc-8b4a-b9a06bd3c776",
+      "DisplayName": "Persistence",
+      "ColorIndex": 3
+    },
+    "276ed644-d61a-4ccc-912e-e15ee47b30d5": {
+      "ProjectGuid": "276ed644-d61a-4ccc-912e-e15ee47b30d5",
+      "DisplayName": "MainEndpoint",
+      "ColorIndex": 4
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    }
+  },
+  "NextColorIndex": 5
+}
