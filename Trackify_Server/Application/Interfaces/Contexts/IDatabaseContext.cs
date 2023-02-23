@@ -1,4 +1,5 @@
-﻿using Domain.Models.Users;
+﻿using Domain.Models.Notes;
+using Domain.Models.Users;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ namespace Application.Interfaces.Contexts
     {
 
         public DbSet<User> Users { get; set; }
+        public DbSet<Note> Notes { get; set; }
         int SaveChanges();
         int SaveChanges(bool acceptAllChangesOnSuccess);
 
