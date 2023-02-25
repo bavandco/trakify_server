@@ -1,5 +1,6 @@
 using Application.Interfaces.Contexts;
 using Application.Repositories;
+using Application.Services;
 using MainEndpoint.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Contexts;
@@ -13,6 +14,7 @@ builder.Services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(c
 
 builder.Services.AddScoped<IDatabaseContext, DatabaseContext>();
 builder.Services.AddTransient<NoteRepository, NoteRepository>();
+builder.Services.AddTransient<INoteServices, NoteServices>();
 // Add services to the container.
 
 builder.Services.AddControllers();
