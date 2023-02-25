@@ -48,9 +48,22 @@ namespace Application.Repositories
             return context.Notes.SingleOrDefault(p=>p.Id == id);
         }
 
-        public List<Note> GetUserNotes(string userId,int pageNumber,int pageSize)
+        public List<Note> GetAllUserNotes(string userId,int pageNumber,int pageSize)
         {
             return context.Notes.Where(p => p.UserId == userId).Skip(pageNumber-1).Take(pageSize).ToList();
+        }
+
+
+        public List<Note> GetNotesBasedOnDateRange(string targetUserId,
+            DateTime startingDate, DateTime endingDate, int pageNumber, int pageSize)
+        {
+            return context.Notes.Where(
+                p => p.UserId == targetUserId 
+                && p.CreatedAt>startingDate 
+                && p.CreatedAt<endingDate)
+                .Skip(pageNumber - 1)
+                .Take(pageSize)
+                .ToList();
         }
 
     }
