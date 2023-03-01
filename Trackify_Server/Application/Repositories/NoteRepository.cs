@@ -10,7 +10,7 @@ namespace Application.Repositories
 {
     public class NoteRepository
     {
-        IDatabaseContext context;
+        private readonly IDatabaseContext context;
         public NoteRepository(IDatabaseContext Context)
         {
             context = Context;

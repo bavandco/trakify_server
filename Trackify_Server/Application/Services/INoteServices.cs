@@ -18,7 +18,7 @@ namespace Application.Services
     }
     public class NoteServices : INoteServices
     {
-        NoteRepository _noteRepo;
+        private readonly NoteRepository _noteRepo;
 
         public NoteServices(NoteRepository _noteRepo)
         {
