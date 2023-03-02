@@ -71,4 +71,3 @@ D:\Trackify_Server\Trackify_Server\MainEndpoint\obj\Debug\net6.0\MainEndpoint.dl
 D:\Trackify_Server\Trackify_Server\MainEndpoint\obj\Debug\net6.0\ref\MainEndpoint.dll
 D:\Trackify_Server\Trackify_Server\MainEndpoint\obj\Debug\net6.0\MainEndpoint.pdb
 D:\Trackify_Server\Trackify_Server\MainEndpoint\obj\Debug\net6.0\MainEndpoint.genruntimeconfig.cache
-D:\Trackify_Server\Trackify_Server\MainEndpoint\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
