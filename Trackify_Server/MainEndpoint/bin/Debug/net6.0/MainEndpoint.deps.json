@@ -9,6 +9,7 @@
       "MainEndpoint/1.0.0": {
         "dependencies": {
           "Application": "1.0.0",
+          "Infrastructure": "1.0.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "6.0.14",
           "Microsoft.EntityFrameworkCore.Design": "6.0.14",
           "Microsoft.EntityFrameworkCore.Tools": "6.0.14",
@@ -575,6 +576,14 @@
           "Domain.dll": {}
         }
       },
+      "Infrastructure/1.0.0": {
+        "dependencies": {
+          "Persistence": "1.0.0"
+        },
+        "runtime": {
+          "Infrastructure.dll": {}
+        }
+      },
       "Persistence/1.0.0": {
         "dependencies": {
           "Application": "1.0.0",
@@ -986,6 +995,11 @@
       "sha512": ""
     },
     "Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Infrastructure/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

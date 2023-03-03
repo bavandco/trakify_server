@@ -10,3 +10,10 @@ D:\Trackify_Server\Trackify_Server\Infrastructure\obj\Debug\net6.0\Infrastructur
 D:\Trackify_Server\Trackify_Server\Infrastructure\obj\Debug\net6.0\Infrastructure.dll
 D:\Trackify_Server\Trackify_Server\Infrastructure\obj\Debug\net6.0\ref\Infrastructure.dll
 D:\Trackify_Server\Trackify_Server\Infrastructure\obj\Debug\net6.0\Infrastructure.pdb
+D:\Trackify_Server\Trackify_Server\Infrastructure\bin\Debug\net6.0\Application.dll
+D:\Trackify_Server\Trackify_Server\Infrastructure\bin\Debug\net6.0\Domain.dll
+D:\Trackify_Server\Trackify_Server\Infrastructure\bin\Debug\net6.0\Persistence.dll
+D:\Trackify_Server\Trackify_Server\Infrastructure\bin\Debug\net6.0\Persistence.pdb
+D:\Trackify_Server\Trackify_Server\Infrastructure\bin\Debug\net6.0\Application.pdb
+D:\Trackify_Server\Trackify_Server\Infrastructure\bin\Debug\net6.0\Domain.pdb
+D:\Trackify_Server\Trackify_Server\Infrastructure\obj\Debug\net6.0\Infrastructure.csproj.CopyComplete

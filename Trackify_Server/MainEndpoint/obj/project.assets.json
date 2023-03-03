@@ -811,6 +811,19 @@
           "bin/placeholder/Domain.dll": {}
         }
       },
+      "Infrastructure/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Persistence": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Infrastructure.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Infrastructure.dll": {}
+        }
+      },
       "Persistence/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -2302,6 +2315,11 @@
       "path": "../Domain/Domain.csproj",
       "msbuildProject": "../Domain/Domain.csproj"
     },
+    "Infrastructure/1.0.0": {
+      "type": "project",
+      "path": "../Infrastructure/Infrastructure.csproj",
+      "msbuildProject": "../Infrastructure/Infrastructure.csproj"
+    },
     "Persistence/1.0.0": {
       "type": "project",
       "path": "../Persistence/Persistence.csproj",
@@ -2311,6 +2329,7 @@
   "projectFileDependencyGroups": {
     "net6.0": [
       "Application >= 1.0.0",
+      "Infrastructure >= 1.0.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 6.0.14",
       "Microsoft.EntityFrameworkCore.Design >= 6.0.14",
       "Microsoft.EntityFrameworkCore.Tools >= 6.0.14",
@@ -2347,6 +2366,9 @@
           "projectReferences": {
             "D:\\Trackify_Server\\Trackify_Server\\Application\\Application.csproj": {
               "projectPath": "D:\\Trackify_Server\\Trackify_Server\\Application\\Application.csproj"
+            },
+            "D:\\Trackify_Server\\Trackify_Server\\Infrastructure\\Infrastructure.csproj": {
+              "projectPath": "D:\\Trackify_Server\\Trackify_Server\\Infrastructure\\Infrastructure.csproj"
             },
             "D:\\Trackify_Server\\Trackify_Server\\Persistence\\Persistence.csproj": {
               "projectPath": "D:\\Trackify_Server\\Trackify_Server\\Persistence\\Persistence.csproj"
