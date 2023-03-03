@@ -87,7 +87,7 @@ namespace MainEndpoint.Controllers
         }
         [HttpPost]
         [Route("RefreshToken")]
-        public IActionResult RefreshToken(string RefreshToken)
+        public async Task<IActionResult> RefreshToken(string RefreshToken)
         {
             var userToken = userTokenRep.FindRefreshToken(RefreshToken);
             if (userToken == null)
@@ -104,12 +104,6 @@ namespace MainEndpoint.Controllers
             return Ok(token);
         }
 
-        [HttpPost]
-        public IActionResult LogOut()
-        {
-            _signInManager.SignOutAsync();
-            return RedirectToAction("Index");
 
-        }
     }
 }
