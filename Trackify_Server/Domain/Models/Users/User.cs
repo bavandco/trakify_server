@@ -10,7 +10,7 @@ namespace Domain.Models.Users
     {
         public string FristName { get; set; }
         public string LastName { get; set; }
-        public string GoogleAuthCode { get; set; }
+        public string? GoogleAuthCode { get; set; }
         public UserGender Gender { get; set; }
         public DateTime BirthDate { get; set; }
 
