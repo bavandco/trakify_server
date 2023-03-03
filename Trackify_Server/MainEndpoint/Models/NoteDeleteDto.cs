@@ -1,6 +1,6 @@
 ﻿namespace MainEndpoint.Models
 {
-    public class NoteDeleteDto
+    public class NoteIdDto
     {
         public Guid Id { get; set; }
     }

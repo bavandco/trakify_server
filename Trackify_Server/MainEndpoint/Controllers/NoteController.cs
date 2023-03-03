@@ -32,7 +32,7 @@ namespace MainEndpoint.Controllers
 
         [HttpPost]
         [Route("deletenote")]
-        public async Task<IActionResult> DeleteNote(NoteDeleteDto note)
+        public async Task<IActionResult> DeleteNote(NoteIdDto note)
         {
 
             string userId = User.Claims.First(x => x.Type == "UserId").Value;
@@ -57,6 +57,96 @@ namespace MainEndpoint.Controllers
                 return StatusCode(200);
             }
             return BadRequest("Not Your Note");
+
+        }
+
+        [HttpGet]
+        [Route("getnote")]
+        public async Task<IActionResult> GetNote(NoteIdDto note)
+        {
+
+            string userId = User.Claims.First(x => x.Type == "UserId").Value;
+            var res =  _noteServices.GetNote(userId, note.Id);
+            if (res !=null)
+            {
+                NoteGetDto noteResult = new NoteGetDto();
+                noteResult.Id = res.NoteId;
+                noteResult.Text = res.Text;
+                noteResult.UpdatedAt = res.UpdatedDate;
+                noteResult.CreatedAt = res.CreatedDate;
+                noteResult.Health = res.Health;
+                noteResult.Happiness = res.Happiness;
+                noteResult.Satisfaction = res.Satisfaction;
+                noteResult.UserId = userId;
+                return Ok(noteResult);
+            }
+            return BadRequest("Bad Id");
+
+        }
+
+        [HttpGet]
+        [Route("getallnotes")]
+        public async Task<IActionResult> GetAllNotes(NotesGetDto model)
+        {
+
+            string userId = User.Claims.First(x => x.Type == "UserId").Value;
+            var res = _noteServices.GetAllUserNotes(userId, model.PageNumber,model.PageSize);
+            var result = new List<NoteGetDto>();
+            if (res != null)
+            {
+                foreach(var note in res)
+                {
+                    result.Add(
+                    new NoteGetDto()
+                    {
+                    Id = note.NoteId,
+                    Text = note.Text,
+                    UpdatedAt = note.UpdatedDate,
+                    CreatedAt = note.CreatedDate,
+                    Health = note.Health,
+                    Happiness = note.Happiness,
+                    Satisfaction = note.Satisfaction,
+                    UserId = userId
+                    }
+                    );
+                }
+
+                return Ok(result);
+            }
+            return BadRequest("Bad Page Size Or Number");
+
+        }
+
+        [HttpGet]
+        [Route("getallnotesbetweendates")]
+        public async Task<IActionResult> GetAllNotesBetweenDates(NotesGetBetweenDatesDto model)
+        {
+
+            string userId = User.Claims.First(x => x.Type == "UserId").Value;
+            var res = _noteServices.GetNotesBasedOnDateRange(userId, model.StartingDate, model.EndingDate,model.PageNumber,model.PageSize);
+            var result = new List<NoteGetDto>();
+            if (res != null)
+            {
+                foreach (var note in res)
+                {
+                    result.Add(
+                    new NoteGetDto()
+                    {
+                        Id = note.NoteId,
+                        Text = note.Text,
+                        UpdatedAt = note.UpdatedDate,
+                        CreatedAt = note.CreatedDate,
+                        Health = note.Health,
+                        Happiness = note.Happiness,
+                        Satisfaction = note.Satisfaction,
+                        UserId = userId
+                    }
+                    );
+                }
+
+                return Ok(result);
+            }
+            return BadRequest("Bad Page Size , Number Or Date Range");
 
         }
     }

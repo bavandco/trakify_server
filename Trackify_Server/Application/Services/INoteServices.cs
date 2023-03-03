@@ -13,8 +13,8 @@ namespace Application.Services
         public int DeleteNote(string signedInUserId, Guid noteId);
         public int UpdateNote(string userId,Guid id, string text, int happiness, int satisfaction, int health);
         public GetNoteDto GetNote(string signedInUserId,Guid noteId);
-        public List<GetNoteDto> GetAllUserNotes(string signedInUserId,string targetUserId,int pageNumber,int pageSize);
-        public List<GetNoteDto> GetNotesBasedOnDateRange(string signedInUserId,string targetUserId,DateTime startingDate,DateTime endingDate, int pageNumber, int pageSize);
+        public List<GetNoteDto> GetAllUserNotes(string signedInUserId,int pageNumber,int pageSize);
+        public List<GetNoteDto> GetNotesBasedOnDateRange(string signedInUserId ,DateTime startingDate,DateTime endingDate, int pageNumber, int pageSize);
     }
     public class NoteServices : INoteServices
     {
@@ -41,10 +41,10 @@ namespace Application.Services
             
         }
 
-        public List<GetNoteDto> GetAllUserNotes(string signedInUserId, string targetUserId, int pageNumber, int pageSize)
+        public List<GetNoteDto> GetAllUserNotes(string signedInUserId, int pageNumber, int pageSize)
         {
             List<GetNoteDto> result = new List<GetNoteDto>();
-            if(pageNumber >= 1 && signedInUserId==targetUserId)
+            if(pageNumber >= 1)
             {
                 var notes = _noteRepo.GetAllUserNotes(signedInUserId, pageNumber, pageSize);
                 foreach (var note in notes)
@@ -82,15 +82,17 @@ namespace Application.Services
                     Happiness= note.Happiness,
                     Health= note.Health,
                     NoteId = note.Id,
+                    UpdatedDate = note.UpdatedAt
+
                 };
             }
             return null;
         }
 
-        public List<GetNoteDto> GetNotesBasedOnDateRange(string signedInUserId, string targetUserId, DateTime startingDate, DateTime endingDate, int pageNumber, int pageSize)
+        public List<GetNoteDto> GetNotesBasedOnDateRange(string signedInUserId, DateTime startingDate, DateTime endingDate, int pageNumber, int pageSize)
         {
             List<GetNoteDto> result = new List<GetNoteDto>();
-            if (pageNumber >= 1 && signedInUserId == targetUserId)
+            if (pageNumber >= 1)
             {
                 var notes =_noteRepo.GetNotesBasedOnDateRange(signedInUserId, startingDate, endingDate, pageNumber, pageSize);
                 foreach (var note in notes)
@@ -134,5 +136,7 @@ namespace Application.Services
         public int? Satisfaction;
         public int? Health;
         public DateTime CreatedDate;
+        public DateTime UpdatedDate;
+
     }
 }
