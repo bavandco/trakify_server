@@ -11,7 +11,7 @@ namespace Application.Services
     {
         public void CreateNote(string text, string userId, int happiness, int satisfaction, int health);
         public int DeleteNote(string signedInUserId, Guid noteId);
-        public void UpdateNote(string userId,Guid id, string text, int happiness, int satisfaction, int health);
+        public int UpdateNote(string userId,Guid id, string text, int happiness, int satisfaction, int health);
         public GetNoteDto GetNote(string signedInUserId,Guid noteId);
         public List<GetNoteDto> GetAllUserNotes(string signedInUserId,string targetUserId,int pageNumber,int pageSize);
         public List<GetNoteDto> GetNotesBasedOnDateRange(string signedInUserId,string targetUserId,DateTime startingDate,DateTime endingDate, int pageNumber, int pageSize);
@@ -112,13 +112,15 @@ namespace Application.Services
             
         }
 
-        public void UpdateNote(string userId, Guid id, string text, int happiness, int satisfaction, int health)
+        public int UpdateNote(string userId, Guid id, string text, int happiness, int satisfaction, int health)
         {
             var note = _noteRepo.GetNote(id);
             if(note.UserId == userId)
             {
                 _noteRepo.UpdateNote(id, text, happiness, satisfaction, health);
+                return 0;
             }
+            return 1;
             
         }
     }

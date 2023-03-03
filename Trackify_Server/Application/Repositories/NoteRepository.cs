@@ -39,7 +39,7 @@ namespace Application.Repositories
 
         public void RemoveNote(Guid id)
         {
-            context.Notes.Remove(new Note() { Id = id });
+            context.Notes.Remove(GetNote(id));
             context.SaveChanges();
         }
 
