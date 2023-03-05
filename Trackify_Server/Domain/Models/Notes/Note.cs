@@ -13,6 +13,8 @@ namespace Domain.Models.Notes
         [Key]
         public Guid Id { get; set; }
         [Required]
+        public string Title { get; set; }
+        [Required]
         public string Text { get; set; }
         public User User { get; set; }
         public string UserId { get; set; }
