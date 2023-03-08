@@ -16,6 +16,7 @@ builder.Services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(c
 builder.Services.AddIdentityService(Configuration);
 builder.Services.AddScoped<IDatabaseContext, DatabaseContext>();
 builder.Services.AddTransient<NoteRepository, NoteRepository>();
+builder.Services.AddTransient<UserRepository, UserRepository>();
 builder.Services.AddTransient<UserTokenRepository, UserTokenRepository>();
 builder.Services.AddTransient<ITokenValidator, TokenValidate>();
 builder.Services.AddTransient<INoteServices, NoteServices>();
