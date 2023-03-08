@@ -1,4 +1,5 @@
 ﻿using Application.Interfaces.Contexts;
+using Domain.Models.Users;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,5 +16,13 @@ namespace Application.Repositories
             this.context = context;
         }
 
+        public void CreateUserProfilePicture(string userId,string src)
+        {
+            UserProfilePicture userProfilePicture = new UserProfilePicture();
+            userProfilePicture.UserId = userId;
+            userProfilePicture.Src = src;
+            context.UserProfilePictures.Add(userProfilePicture);
+            context.SaveChanges();
+        }
     }
 }
