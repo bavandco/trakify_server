@@ -20,6 +20,7 @@ namespace Persistence.Contexts
         }
         public DbSet<User> Users { get; set; }
         public DbSet<Note> Notes { get; set; }
+        public DbSet<UserProfilePicture> UserProfilePictures { get; set; }
         public DbSet<UserToken> UserTokens { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
