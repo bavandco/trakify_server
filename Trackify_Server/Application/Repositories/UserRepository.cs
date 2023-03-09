@@ -24,5 +24,17 @@ namespace Application.Repositories
             context.UserProfilePictures.Add(userProfilePicture);
             context.SaveChanges();
         }
+
+        public UserProfilePicture GetUserProfilePicture(string userId)
+        {
+            return context.UserProfilePictures.SingleOrDefault(p => p.UserId == userId);
+        }
+
+        public void RemoveUserProfilePicture(string userId)
+        {
+            var userpp = context.UserProfilePictures.SingleOrDefault(m => m.UserId == userId);
+            context.UserProfilePictures.Remove(userpp);
+            context.SaveChanges();
+        }
     }
 }
