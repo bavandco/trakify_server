@@ -13,6 +13,7 @@ namespace Application.Services
     public interface IUserServices
     {
         public string CreateUserProfilePicture(string UserId, IFormFile file);
+        public FileStream GetUserProfilePicture(string userId);
     }
     public class UserServices : IUserServices
     {
