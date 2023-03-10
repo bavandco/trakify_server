@@ -72,5 +72,33 @@ namespace Application.Services
             var imageFile = System.IO.File.OpenRead(_env.WebRootPath + image.Src);
             return imageFile;
         }
+
+        public UserDto GetUserProfile(string userId)
+        {
+            var user = repo.GetUserProfile(userId);
+            return new UserDto()
+            {
+                Id = user.Id,
+                FristName = user.FristName,
+                LastName = user.LastName,
+                BirthDate = user.BirthDate,
+                Email = user.Email,
+                Gender = user.Gender,
+                GoogleAuthCode = user.GoogleAuthCode,
+            };
+        }
+
+    }
+
+    public class UserDto
+    {
+        public string Id { get; set; }
+        public string FristName { get; set; }
+        public string LastName { get; set; }
+        public string Email { get; set; }
+        public string? GoogleAuthCode { get; set; }
+        public UserGender Gender { get; set; }
+        public DateTime BirthDate { get; set; }
+
     }
 }
