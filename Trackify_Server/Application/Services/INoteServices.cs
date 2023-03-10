@@ -9,9 +9,9 @@ namespace Application.Services
 {
     public interface INoteServices
     {
-        public void CreateNote(string text, string userId, int happiness, int satisfaction, int health);
+        public void CreateNote(string title, string text, string userId, int happiness, int satisfaction, int health);
         public int DeleteNote(string signedInUserId, Guid noteId);
-        public int UpdateNote(string userId,Guid id, string text, int happiness, int satisfaction, int health);
+        public int UpdateNote(string userId, Guid id, string title, string text, int happiness, int satisfaction, int health)
         public GetNoteDto GetNote(string signedInUserId,Guid noteId);
         public List<GetNoteDto> GetAllUserNotes(string signedInUserId,int pageNumber,int pageSize);
         public List<GetNoteDto> GetNotesBasedOnDateRange(string signedInUserId ,DateTime startingDate,DateTime endingDate, int pageNumber, int pageSize);
@@ -24,9 +24,9 @@ namespace Application.Services
         {
             this._noteRepo = _noteRepo;
         }
-        public void CreateNote(string text, string userId, int happiness, int satisfaction, int health)
+        public void CreateNote(string title, string text, string userId, int happiness, int satisfaction, int health)
         {
-            _noteRepo.CreateNote(text, userId, happiness, satisfaction, health);
+            _noteRepo.CreateNote(title,text, userId, happiness, satisfaction, health);
         }
 
         public int DeleteNote(string signedInUserId, Guid noteId)
@@ -58,6 +58,7 @@ namespace Application.Services
                         Health = note.Health,
                         Satisfaction = note.Satisfaction,
                         Text = note.Text,
+                        Title = note.Title,
                     });
                 }
                 return result;
@@ -77,6 +78,7 @@ namespace Application.Services
                 {
                     UserId = note.UserId,
                     Text = note.Text,
+                    Title = note.Title,
                     Satisfaction = note.Satisfaction,
                     CreatedDate = note.CreatedAt,
                     Happiness= note.Happiness,
@@ -106,6 +108,7 @@ namespace Application.Services
                         Health = note.Health,
                         Satisfaction = note.Satisfaction,
                         Text = note.Text,
+                        Title = note.Title,
                     });
                 }
                 return result;
@@ -114,12 +117,12 @@ namespace Application.Services
             
         }
 
-        public int UpdateNote(string userId, Guid id, string text, int happiness, int satisfaction, int health)
+        public int UpdateNote(string userId, Guid id,string title, string text, int happiness, int satisfaction, int health)
         {
             var note = _noteRepo.GetNote(id);
             if(note.UserId == userId)
             {
-                _noteRepo.UpdateNote(id, text, happiness, satisfaction, health);
+                _noteRepo.UpdateNote(id,title, text, happiness, satisfaction, health);
                 return 0;
             }
             return 1;
@@ -131,6 +134,7 @@ namespace Application.Services
     {
         public Guid NoteId;
         public string Text;
+        public string Title;
         public string UserId;
         public int? Happiness;
         public int? Satisfaction;
