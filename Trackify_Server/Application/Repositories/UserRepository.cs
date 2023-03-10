@@ -36,5 +36,11 @@ namespace Application.Repositories
             context.UserProfilePictures.Remove(userpp);
             context.SaveChanges();
         }
+
+        public User GetUserProfile(string userId)
+        {
+            return context.Users.SingleOrDefault(p=>p.Id == userId);
+            
+        }
     }
 }
