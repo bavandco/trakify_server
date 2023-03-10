@@ -35,5 +35,16 @@ namespace MainEndpoint.Controllers
             return Ok("No Image");
 
         }
+        [HttpGet]
+        [Route("GetUserProfile")]
+        public IActionResult GetUserProfile()
+        {
+            string userId = User.Claims.First(x => x.Type == "UserId").Value;
+            var user = _userServices.GetUserProfile(userId);
+
+            return Ok(user);
+
+        }
+
     }
 }

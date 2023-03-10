@@ -14,6 +14,7 @@ namespace Application.Services
     {
         public string CreateUserProfilePicture(string UserId, IFormFile file);
         public FileStream GetUserProfilePicture(string userId);
+        public UserDto GetUserProfile(string userId);
     }
     public class UserServices : IUserServices
     {
