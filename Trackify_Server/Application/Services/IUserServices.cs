@@ -64,5 +64,12 @@ namespace Application.Services
                 return ex.Message.ToString();
             }
         }
+
+        public FileStream GetUserProfilePicture(string userId)
+        {
+            var image = repo.GetUserProfilePicture(userId);
+            var imageFile = System.IO.File.OpenRead(_env.WebRootPath + image.Src);
+            return imageFile;
+        }
     }
 }
