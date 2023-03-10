@@ -16,20 +16,21 @@ namespace Application.Repositories
             context = Context;
         }
 
-        public void CreateNote(string text,string userId,int happiness,int satisfaction,int health)
+        public void CreateNote(string title,string text,string userId,int happiness,int satisfaction,int health)
         {
             context.Notes.Add(new Note() {
-                Text = text, CreatedAt = DateTime.Now, UserId = userId,
+                Title=title,Text = text, CreatedAt = DateTime.Now, UserId = userId,
                 Happiness = happiness, Health = health, Satisfaction = satisfaction, UpdatedAt = DateTime.Now
             });
             context.SaveChanges();
 
         }
 
-        public void UpdateNote(Guid id,string text, int happiness, int satisfaction, int health)
+        public void UpdateNote(Guid id,string title,string text, int happiness, int satisfaction, int health)
         {
             Note note = context.Notes.SingleOrDefault(p => p.Id == id);
             note.Text = text;
+            note.Title = title;
             note.Happiness = happiness;
             note.Satisfaction = satisfaction;
             note.Health = health;
