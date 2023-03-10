@@ -7,6 +7,8 @@ namespace MainEndpoint.Models
         public Guid Id { get; set; }
         [Required]
         public string Text { get; set; }
+        [Required]
+        public string Title { get; set; }
 
         [Range(0, 100)]
         public int Happiness { get; set; }

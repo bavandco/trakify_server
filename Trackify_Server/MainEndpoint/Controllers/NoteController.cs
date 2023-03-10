@@ -21,7 +21,7 @@ namespace MainEndpoint.Controllers
             if (ModelState.IsValid)
             {
                 string userId = User.Claims.First(x => x.Type == "UserId").Value;
-                _noteServices.CreateNote(note.Text, userId, note.Happiness, note.Satisfaction, note.Health);
+                _noteServices.CreateNote(note.Title,note.Text, userId, note.Happiness, note.Satisfaction, note.Health);
                 return StatusCode(200);
             }
             else
@@ -51,7 +51,7 @@ namespace MainEndpoint.Controllers
         {
 
             string userId = User.Claims.First(x => x.Type == "UserId").Value;
-            int res = _noteServices.UpdateNote(userId,note.Id,note.Text,note.Happiness,note.Satisfaction,note.Health);
+            int res = _noteServices.UpdateNote(userId,note.Id,note.Title,note.Text,note.Happiness,note.Satisfaction,note.Health);
             if (res == 0)
             {
                 return StatusCode(200);
@@ -72,6 +72,7 @@ namespace MainEndpoint.Controllers
                 NoteGetDto noteResult = new NoteGetDto();
                 noteResult.Id = res.NoteId;
                 noteResult.Text = res.Text;
+                noteResult.Title = res.Title;
                 noteResult.UpdatedAt = res.UpdatedDate;
                 noteResult.CreatedAt = res.CreatedDate;
                 noteResult.Health = res.Health;
@@ -101,6 +102,7 @@ namespace MainEndpoint.Controllers
                     {
                     Id = note.NoteId,
                     Text = note.Text,
+                    Title = note.Title,
                     UpdatedAt = note.UpdatedDate,
                     CreatedAt = note.CreatedDate,
                     Health = note.Health,
@@ -134,6 +136,7 @@ namespace MainEndpoint.Controllers
                     {
                         Id = note.NoteId,
                         Text = note.Text,
+                        Title = note.Title,
                         UpdatedAt = note.UpdatedDate,
                         CreatedAt = note.CreatedDate,
                         Health = note.Health,

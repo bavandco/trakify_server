@@ -8,6 +8,8 @@ namespace MainEndpoint.Models
         public Guid Id { get; set; }
         [Required]
         public string Text { get; set; }
+        [Required]
+        public string Title { get; set; }
         public string UserId { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
