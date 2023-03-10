@@ -22,6 +22,18 @@ namespace MainEndpoint.Controllers
 
         }
 
+        [HttpGet]
+        [Route("GetUserProfilePicture")]
+        public IActionResult GetUserProfilePicture()
+        {
+            string userId = User.Claims.First(x => x.Type == "UserId").Value;
+            var image = _userServices.GetUserProfilePicture(userId);
+            if (image != null)
+            {
+                return File(image, "image/jpeg");
+            }
+            return Ok("No Image");
 
+        }
     }
 }
