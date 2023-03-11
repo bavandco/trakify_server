@@ -11,7 +11,7 @@ namespace Application.Services
     {
         public void CreateNote(string title, string text, string userId, int happiness, int satisfaction, int health);
         public int DeleteNote(string signedInUserId, Guid noteId);
-        public int UpdateNote(string userId, Guid id, string title, string text, int happiness, int satisfaction, int health)
+        public int UpdateNote(string userId, Guid id, string title, string text, int happiness, int satisfaction, int health);
         public GetNoteDto GetNote(string signedInUserId,Guid noteId);
         public List<GetNoteDto> GetAllUserNotes(string signedInUserId,int pageNumber,int pageSize);
         public List<GetNoteDto> GetNotesBasedOnDateRange(string signedInUserId ,DateTime startingDate,DateTime endingDate, int pageNumber, int pageSize);
