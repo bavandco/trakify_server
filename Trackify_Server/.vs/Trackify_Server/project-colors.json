@@ -35,7 +35,12 @@
       "ProjectGuid": "37078756-e7ab-4abd-83da-5de1e34ed525",
       "DisplayName": "MainEndpoint",
       "ColorIndex": 5
+    },
+    "d1bf8b58-242f-419a-8b63-54d7e0769f5d": {
+      "ProjectGuid": "d1bf8b58-242f-419a-8b63-54d7e0769f5d",
+      "DisplayName": "AdminEndpoint",
+      "ColorIndex": 6
     }
   },
-  "NextColorIndex": 6
+  "NextColorIndex": 7
 }

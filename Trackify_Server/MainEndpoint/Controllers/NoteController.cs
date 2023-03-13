@@ -20,7 +20,11 @@ namespace MainEndpoint.Controllers
         {
             if (ModelState.IsValid)
             {
-                string userId = User.Claims.First(x => x.Type == "UserId").Value;
+                string userId = User.Claims.FirstOrDefault(c => c.Type == "UserId")?.Value;
+                if (userId == null)
+                {
+                    return Unauthorized();
+                }
                 _noteServices.CreateNote(note.Title,note.Text, userId, note.Happiness, note.Satisfaction, note.Health);
                 return StatusCode(200);
             }
@@ -35,7 +39,11 @@ namespace MainEndpoint.Controllers
         public async Task<IActionResult> DeleteNote(NoteIdDto note)
         {
 
-            string userId = User.Claims.First(x => x.Type == "UserId").Value;
+            string userId = User.Claims.FirstOrDefault(c => c.Type == "UserId")?.Value;
+            if (userId == null)
+            {
+                return Unauthorized();
+            }
             int res = _noteServices.DeleteNote(userId,note.Id);
             if(res == 0)
             {
@@ -50,7 +58,11 @@ namespace MainEndpoint.Controllers
         public async Task<IActionResult> UpdateNote(NoteUpdateDto note)
         {
 
-            string userId = User.Claims.First(x => x.Type == "UserId").Value;
+            string userId = User.Claims.FirstOrDefault(c => c.Type == "UserId")?.Value;
+            if (userId == null)
+            {
+                return Unauthorized();
+            }
             int res = _noteServices.UpdateNote(userId,note.Id,note.Title,note.Text,note.Happiness,note.Satisfaction,note.Health);
             if (res == 0)
             {
@@ -65,7 +77,11 @@ namespace MainEndpoint.Controllers
         public async Task<IActionResult> GetNote(NoteIdDto note)
         {
 
-            string userId = User.Claims.First(x => x.Type == "UserId").Value;
+            string userId = User.Claims.FirstOrDefault(c => c.Type == "UserId")?.Value;
+            if (userId == null)
+            {
+                return Unauthorized();
+            }
             var res =  _noteServices.GetNote(userId, note.Id);
             if (res !=null)
             {
@@ -90,7 +106,11 @@ namespace MainEndpoint.Controllers
         public async Task<IActionResult> GetAllNotes(NotesGetDto model)
         {
 
-            string userId = User.Claims.First(x => x.Type == "UserId").Value;
+            string userId = User.Claims.FirstOrDefault(c => c.Type == "UserId")?.Value;
+            if (userId == null)
+            {
+                return Unauthorized();
+            }
             var res = _noteServices.GetAllUserNotes(userId, model.PageNumber,model.PageSize);
             var result = new List<NoteGetDto>();
             if (res != null)
@@ -124,7 +144,11 @@ namespace MainEndpoint.Controllers
         public async Task<IActionResult> GetAllNotesBetweenDates(NotesGetBetweenDatesDto model)
         {
 
-            string userId = User.Claims.First(x => x.Type == "UserId").Value;
+            string userId = User.Claims.FirstOrDefault(c => c.Type == "UserId")?.Value;
+            if (userId == null)
+            {
+                return Unauthorized();
+            }
             var res = _noteServices.GetNotesBasedOnDateRange(userId, model.StartingDate, model.EndingDate,model.PageNumber,model.PageSize);
             var result = new List<NoteGetDto>();
             if (res != null)
