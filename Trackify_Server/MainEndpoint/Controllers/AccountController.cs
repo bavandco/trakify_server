@@ -103,6 +103,23 @@ namespace MainEndpoint.Controllers
             userTokenRep.DeleteToken(RefreshToken);
             return Ok(token);
         }
+        [HttpPost]
+        [Route("ForgetPassword")]
+        public async Task<IActionResult> ForgetPassword(ForgetPasswordDto forgetDto)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest("Invalid Email");
+            }
+            var user = _userManager.FindByEmailAsync(forgetDto.Email).Result;
+            if(user == null)
+            {
+                return BadRequest("User Not Found");
+            }
+
+            string token = _userManager.GeneratePasswordResetTokenAsync(user).Result;
+            string body = "Click the following link to reset your password.";
+        }
 
 
     }
