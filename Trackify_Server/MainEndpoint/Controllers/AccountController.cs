@@ -1,4 +1,5 @@
 ﻿using Application.Repositories;
+using Application.Services;
 using Domain.Models.Users;
 using MainEndpoint.Models;
 using MainEndpoint.Token;
@@ -17,14 +18,16 @@ namespace MainEndpoint.Controllers
         private readonly IConfiguration configuration;
         private readonly UserTokenRepository userTokenRep;
         private readonly CreateToken createToken;
+        private readonly EmailService _emailService;
 
-        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager, IConfiguration configuration, UserTokenRepository userTokenRep, CreateToken createToken)
+        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager, IConfiguration configuration, UserTokenRepository userTokenRep, CreateToken createToken, EmailService _emailService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             this.configuration = configuration;
             this.userTokenRep = userTokenRep;
             this.createToken = createToken;
+            this._emailService = _emailService;
         }
 
         [HttpPost]
@@ -116,9 +119,32 @@ namespace MainEndpoint.Controllers
             {
                 return BadRequest("User Not Found");
             }
-
             string token = _userManager.GeneratePasswordResetTokenAsync(user).Result;
-            string body = "Click the following link to reset your password.";
+            string callbackUrl = "WillSetLater";
+            
+            string body = $"Click the following link to reset your password. </br> <a href={callbackUrl}>Reset Password</a>";
+            _emailService.Execute(forgetDto.Email, body, "فراموشی رمز عبور");
+            return Ok();
+        }
+        [HttpPost]
+        [Route("ForgetPassword")]
+        public async Task<IActionResult> ForgetPassword(ResetPasswordDto dto)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(dto);
+            }
+            if (dto.Password != dto.ConfirmPassword)
+            {
+                return BadRequest("Password Confirmation Error");
+            }
+            var user = _userManager.FindByIdAsync(dto.UserId).Result;
+            if (user == null)
+            {
+                return BadRequest();
+            }
+            var result = _userManager.ResetPasswordAsync(user, dto.Token, dto.Password).Result;
+            return Ok(result);
         }
 
 

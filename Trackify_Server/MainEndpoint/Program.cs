@@ -22,6 +22,7 @@ builder.Services.AddTransient<ITokenValidator, TokenValidate>();
 builder.Services.AddTransient<INoteServices, NoteServices>();
 builder.Services.AddTransient<IUserServices, UserServices>();
 builder.Services.AddScoped<CreateToken, CreateToken>();
+builder.Services.AddScoped<EmailService, EmailService>();
 // Add services to the container.
 
 builder.Services.AddControllers();
