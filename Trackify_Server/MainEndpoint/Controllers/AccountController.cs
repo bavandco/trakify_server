@@ -127,8 +127,8 @@ namespace MainEndpoint.Controllers
             return Ok();
         }
         [HttpPost]
-        [Route("ForgetPassword")]
-        public async Task<IActionResult> ForgetPassword(ResetPasswordDto dto)
+        [Route("ForgetPasswordConfirmation")]
+        public async Task<IActionResult> ForgetPasswordConfirmation(ResetPasswordDto dto)
         {
             if (!ModelState.IsValid)
             {
