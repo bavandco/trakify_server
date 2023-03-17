@@ -39,7 +39,7 @@ namespace AdminEndpoint.Token
             var claims = new List<Claim>
                 {
                     new Claim ("UserId",user.Id.ToString()),
-                    new Claim ("Role",role),
+                    new Claim (ClaimTypes.Role,role),
                 };
             string key = Environment.GetEnvironmentVariable("SECRET");
             var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key));

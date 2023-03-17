@@ -1,9 +1,8 @@
+using AdminEndpoint.Extensions;
 using AdminEndpoint.Token;
 using Application.Interfaces.Contexts;
 using Application.Repositories;
 using Infrastructure.IdentityConfig;
-using MainEndpoint.Extensions;
-
 using Microsoft.EntityFrameworkCore;
 using Persistence.Contexts;
 
@@ -35,7 +34,13 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("AdminsOnly", policy =>
+    {
+        policy.RequireRole("Administrator");
+    });
+});
 
 app.MapControllers();
 
