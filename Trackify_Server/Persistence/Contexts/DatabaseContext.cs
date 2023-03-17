@@ -2,6 +2,7 @@
 using Domain.Models.Attributes;
 using Domain.Models.Notes;
 using Domain.Models.Users;
+using Infrastructure.IdentityConfig;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -24,7 +25,7 @@ namespace Persistence.Contexts
         public DbSet<UserToken> UserTokens { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
-
+            /*builder.ApplyConfiguration(new RoleConfiguration());*/
             base.OnModelCreating(builder);
         }
 

@@ -1,5 +1,22 @@
-var builder = WebApplication.CreateBuilder(args);
+using AdminEndpoint.Token;
+using Application.Interfaces.Contexts;
+using Application.Repositories;
+using Infrastructure.IdentityConfig;
+using MainEndpoint.Extensions;
 
+using Microsoft.EntityFrameworkCore;
+using Persistence.Contexts;
+
+var builder = WebApplication.CreateBuilder(args);
+var Configuration = builder.Configuration;
+builder.Services.ConfigureCors();
+builder.Services.ConfigureIISIntegration();
+string connection = Configuration["ConnectionString:SqlServer"];
+builder.Services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(connection));
+builder.Services.AddIdentityService(Configuration);
+builder.Services.AddScoped<IDatabaseContext, DatabaseContext>();
+builder.Services.AddTransient<CreateToken, CreateToken>();
+builder.Services.AddTransient<UserTokenRepository, UserTokenRepository>();
 // Add services to the container.
 
 builder.Services.AddControllers();

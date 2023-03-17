@@ -11,7 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 var Configuration = builder.Configuration;
 builder.Services.ConfigureCors();
 builder.Services.ConfigureIISIntegration();
-string connection = Configuration["ConnectionString:SqlServer"];
+string connection = Configuration["ConnectionString:SqlServer"];     
 builder.Services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(connection));
 builder.Services.AddIdentityService(Configuration);
 builder.Services.AddScoped<IDatabaseContext, DatabaseContext>();
