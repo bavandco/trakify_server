@@ -1,4 +1,5 @@
-﻿using Application.Repositories;
+﻿using AdminEndpoint.Models;
+using Application.Repositories;
 using Domain.Models.Users;
 using MainEndpoint.Models;
 using Microsoft.AspNetCore.Authorization;
@@ -30,6 +31,20 @@ namespace AdminEndpoint.Controllers
                 return Unauthorized();
             }
             return Ok(repo.GetAllNotes(dto.PageNumber,dto.PageSize));
+        }
+
+
+
+        [HttpGet]
+        [Route("AdminGetUserNotes")]
+        public async Task<IActionResult> GetUserNotes(AdminGetUserNotesDto dto)
+        {
+            string userId = User.Claims.FirstOrDefault(c => c.Type == "UserId")?.Value;
+            if (userId == null || !_userManager.IsInRoleAsync(_userManager.FindByIdAsync(userId).Result, "Administrator").Result)
+            {
+                return Unauthorized();
+            }
+            return Ok(repo.GetAllUserNotes(dto.UserId,dto.PageNumber, dto.PageSize));
         }
     }
 }

@@ -18,6 +18,7 @@ builder.Services.AddScoped<IDatabaseContext, DatabaseContext>();
 builder.Services.AddTransient<CreateToken, CreateToken>();
 builder.Services.AddTransient<UserTokenRepository, UserTokenRepository>();
 builder.Services.AddTransient<NoteRepository, NoteRepository>();
+builder.Services.AddTransient<UserRepository, UserRepository>();
 builder.Services.AddTransient<ITokenValidator, TokenValidate>();
 // Add services to the container.
 

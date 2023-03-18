@@ -16,6 +16,11 @@ namespace Application.Repositories
             this.context = context;
         }
 
+        public IQueryable<User> GetAllUsers(int pageNumber,int pageSize)
+        {
+            return context.Users.Skip(pageNumber - 1).Take(pageSize);
+        }
+
         public void CreateUserProfilePicture(string userId,string src)
         {
             UserProfilePicture userProfilePicture = new UserProfilePicture();
