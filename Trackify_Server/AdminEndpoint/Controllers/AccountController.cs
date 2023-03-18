@@ -33,7 +33,7 @@ namespace AdminEndpoint.Controllers
             var user = _userManager.FindByNameAsync(model.Email).Result;
             if (user == null || !_userManager.IsInRoleAsync(user, "Administrator").Result)
             {
-                return Unauthorized("نام کاربری یا کلمه عبور نادرست است");
+                return Unauthorized();
             }
             var result = _signInManager.PasswordSignInAsync(user, model.Password, isPersistent: true, true).Result;
             if (result.Succeeded == false)

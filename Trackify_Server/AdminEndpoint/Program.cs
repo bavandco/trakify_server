@@ -2,6 +2,7 @@ using AdminEndpoint.Extensions;
 using AdminEndpoint.Token;
 using Application.Interfaces.Contexts;
 using Application.Repositories;
+using Application.Services;
 using Infrastructure.IdentityConfig;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Contexts;
@@ -16,12 +17,16 @@ builder.Services.AddIdentityService(Configuration);
 builder.Services.AddScoped<IDatabaseContext, DatabaseContext>();
 builder.Services.AddTransient<CreateToken, CreateToken>();
 builder.Services.AddTransient<UserTokenRepository, UserTokenRepository>();
+builder.Services.AddTransient<NoteRepository, NoteRepository>();
+builder.Services.AddTransient<ITokenValidator, TokenValidate>();
 // Add services to the container.
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.ConfigureJWT(Configuration);
+builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
@@ -34,13 +39,8 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-builder.Services.AddAuthorization(options =>
-{
-    options.AddPolicy("AdminsOnly", policy =>
-    {
-        policy.RequireRole("Administrator");
-    });
-});
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapControllers();
 
