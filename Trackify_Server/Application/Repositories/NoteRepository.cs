@@ -55,6 +55,12 @@ namespace Application.Repositories
         }
 
 
+        public List<Note> GetAllNotes( int pageNumber, int pageSize)
+        {
+            return context.Notes.Skip(pageNumber - 1).Take(pageSize).ToList();
+        }
+
+
         public List<Note> GetNotesBasedOnDateRange(string targetUserId,
             DateTime startingDate, DateTime endingDate, int pageNumber, int pageSize)
         {
