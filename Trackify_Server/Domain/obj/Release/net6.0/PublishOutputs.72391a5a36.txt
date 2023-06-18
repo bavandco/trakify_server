@@ -1,0 +1,14 @@
+D:\Trackify_Server\Trackify_Server\Domain\bin\Release\net6.0\publish\Domain.dll
+D:\Trackify_Server\Trackify_Server\Domain\bin\Release\net6.0\publish\Domain.deps.json
+D:\Trackify_Server\Trackify_Server\Domain\bin\Release\net6.0\publish\Domain.pdb
+D:\Trackify_Server\Trackify_Server\Domain\bin\Release\net6.0\publish\Microsoft.AspNetCore.Cryptography.Internal.dll
+D:\Trackify_Server\Trackify_Server\Domain\bin\Release\net6.0\publish\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+D:\Trackify_Server\Trackify_Server\Domain\bin\Release\net6.0\publish\Microsoft.Extensions.Caching.Abstractions.dll
+D:\Trackify_Server\Trackify_Server\Domain\bin\Release\net6.0\publish\Microsoft.Extensions.DependencyInjection.dll
+D:\Trackify_Server\Trackify_Server\Domain\bin\Release\net6.0\publish\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\Trackify_Server\Trackify_Server\Domain\bin\Release\net6.0\publish\Microsoft.Extensions.Identity.Core.dll
+D:\Trackify_Server\Trackify_Server\Domain\bin\Release\net6.0\publish\Microsoft.Extensions.Identity.Stores.dll
+D:\Trackify_Server\Trackify_Server\Domain\bin\Release\net6.0\publish\Microsoft.Extensions.Logging.dll
+D:\Trackify_Server\Trackify_Server\Domain\bin\Release\net6.0\publish\Microsoft.Extensions.Logging.Abstractions.dll
+D:\Trackify_Server\Trackify_Server\Domain\bin\Release\net6.0\publish\Microsoft.Extensions.Options.dll
+D:\Trackify_Server\Trackify_Server\Domain\bin\Release\net6.0\publish\Microsoft.Extensions.Primitives.dll

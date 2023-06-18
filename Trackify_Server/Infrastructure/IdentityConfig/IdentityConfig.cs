@@ -16,7 +16,7 @@ namespace Infrastructure.IdentityConfig
     {
         public static IServiceCollection AddIdentityService(this IServiceCollection services, IConfiguration configuration)
         {
-            string connection = configuration["ConnectionString:SqlServer"];
+            string connection = configuration["ConnectionString:DefaultConnection"];
             services.AddDbContext<DatabaseContext>(options => options.UseNpgsql(connection));
             services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<DatabaseContext>()
                 .AddDefaultTokenProviders().AddRoles<IdentityRole>().AddErrorDescriber<CustomIdentityError>();

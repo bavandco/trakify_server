@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "1lUiRBijgrmJeGB+uWqApsKEjOlQ+ktov8+aoM8PFJw=",
+  "Source": "MainEndpoint",
+  "BasePath": "_content/MainEndpoint",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

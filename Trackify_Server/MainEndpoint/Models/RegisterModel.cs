@@ -4,7 +4,7 @@ namespace MainEndpoint.Models
 {
     public class RegisterModel
     {
-        public string FristName { get; set; }
+        public string FirstName { get; set; }
         public string LastName { get; set; }
         public string GoogleAuthCode { get; set; }
         public UserGender Gender { get; set; }

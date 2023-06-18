@@ -1,0 +1,14 @@
+D:\published\Domain.dll
+D:\published\Domain.deps.json
+D:\published\Domain.pdb
+D:\published\Microsoft.AspNetCore.Cryptography.Internal.dll
+D:\published\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+D:\published\Microsoft.Extensions.Caching.Abstractions.dll
+D:\published\Microsoft.Extensions.DependencyInjection.dll
+D:\published\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\published\Microsoft.Extensions.Identity.Core.dll
+D:\published\Microsoft.Extensions.Identity.Stores.dll
+D:\published\Microsoft.Extensions.Logging.dll
+D:\published\Microsoft.Extensions.Logging.Abstractions.dll
+D:\published\Microsoft.Extensions.Options.dll
+D:\published\Microsoft.Extensions.Primitives.dll

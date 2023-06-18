@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "0gQBeT4wvuRlRQ44k8dMGEFtkFdjCJxMAJ0W/hkFW+o=",
+  "Source": "MainEndpoint",
+  "BasePath": "_content/MainEndpoint",
+  "Mode": "Default",
+  "ManifestType": "Publish",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

@@ -25,7 +25,7 @@ namespace MainEndpoint.Extensions
 configuration)
         {
             var jwtSettings = configuration.GetSection("JwtSettings");
-            var secretKey = Environment.GetEnvironmentVariable("SECRET");
+            var secretKey = "kflgopwsdkgtyfcv";
             services.AddAuthentication(opt =>
             {
                 opt.DefaultSignInScheme = JwtBearerDefaults.AuthenticationScheme;

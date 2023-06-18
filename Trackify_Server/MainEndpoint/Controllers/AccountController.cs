@@ -41,7 +41,7 @@ namespace MainEndpoint.Controllers
                 {
                     Email = model.Email,
                     BirthDate = model.BirthDate,
-                    FristName = model.FristName,
+                    FristName = model.FirstName,
                     LastName = model.LastName,
                     Gender = model.Gender,
                     UserName = model.Email,
@@ -90,9 +90,9 @@ namespace MainEndpoint.Controllers
         }
         [HttpPost]
         [Route("RefreshToken")]
-        public async Task<IActionResult> RefreshToken(string RefreshToken)
+        public async Task<IActionResult> RefreshToken([FromBody] RefreshToken refreshToken)
         {
-            var userToken = userTokenRep.FindRefreshToken(RefreshToken);
+            var userToken = userTokenRep.FindRefreshToken(refreshToken.refreshToken);
             if (userToken == null)
             {
                 return Unauthorized();
@@ -103,7 +103,7 @@ namespace MainEndpoint.Controllers
             }
             var user = _userManager.FindByIdAsync(userToken.UserId).Result;
             var token = createToken.CreateTokens(user);
-            userTokenRep.DeleteToken(RefreshToken);
+            userTokenRep.DeleteToken(refreshToken.refreshToken);
             return Ok(token);
         }
         [HttpPost]

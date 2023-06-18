@@ -1,0 +1,12 @@
+D:\Trackify_Server\Trackify_Server\Domain\bin\Release\net6.0\Domain.deps.json
+D:\Trackify_Server\Trackify_Server\Domain\bin\Release\net6.0\Domain.dll
+D:\Trackify_Server\Trackify_Server\Domain\bin\Release\net6.0\ref\Domain.dll
+D:\Trackify_Server\Trackify_Server\Domain\bin\Release\net6.0\Domain.pdb
+D:\Trackify_Server\Trackify_Server\Domain\obj\Release\net6.0\Domain.csproj.AssemblyReference.cache
+D:\Trackify_Server\Trackify_Server\Domain\obj\Release\net6.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\Trackify_Server\Trackify_Server\Domain\obj\Release\net6.0\Domain.AssemblyInfoInputs.cache
+D:\Trackify_Server\Trackify_Server\Domain\obj\Release\net6.0\Domain.AssemblyInfo.cs
+D:\Trackify_Server\Trackify_Server\Domain\obj\Release\net6.0\Domain.csproj.CoreCompileInputs.cache
+D:\Trackify_Server\Trackify_Server\Domain\obj\Release\net6.0\Domain.dll
+D:\Trackify_Server\Trackify_Server\Domain\obj\Release\net6.0\ref\Domain.dll
+D:\Trackify_Server\Trackify_Server\Domain\obj\Release\net6.0\Domain.pdb

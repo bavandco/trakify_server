@@ -32,7 +32,7 @@ namespace MainEndpoint.Token
                 {
                     new Claim ("UserId",user.Id.ToString()),
                 };
-            string key = Environment.GetEnvironmentVariable("SECRET");
+            string key = "kflgopwsdkgtyfcv";
             var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key));
             var credentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
             var tokenExp = DateTime.Now.AddMinutes(int.Parse(configuration["JwtSettings:expires"]));
