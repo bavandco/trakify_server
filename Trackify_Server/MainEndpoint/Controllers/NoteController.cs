@@ -74,7 +74,7 @@ namespace MainEndpoint.Controllers
 
         [HttpGet]
         [Route("getnote")]
-        public async Task<IActionResult> GetNote(NoteIdDto note)
+        public async Task<IActionResult> GetNote(Guid Id)
         {
 
             string userId = User.Claims.FirstOrDefault(c => c.Type == "UserId")?.Value;
@@ -82,7 +82,7 @@ namespace MainEndpoint.Controllers
             {
                 return Unauthorized();
             }
-            var res =  _noteServices.GetNote(userId, note.Id);
+            var res =  _noteServices.GetNote(userId, Id);
             if (res !=null)
             {
                 NoteGetDto noteResult = new NoteGetDto();
@@ -103,7 +103,7 @@ namespace MainEndpoint.Controllers
 
         [HttpGet]
         [Route("getallnotes")]
-        public async Task<IActionResult> GetAllNotes(NotesGetDto model)
+        public async Task<IActionResult> GetAllNotes(int pageSize,int pageNumber)
         {
 
             string userId = User.Claims.FirstOrDefault(c => c.Type == "UserId")?.Value;
@@ -111,7 +111,7 @@ namespace MainEndpoint.Controllers
             {
                 return Unauthorized();
             }
-            var res = _noteServices.GetAllUserNotes(userId, model.PageNumber,model.PageSize);
+            var res = _noteServices.GetAllUserNotes(userId, pageNumber, pageSize);
             var result = new List<NoteGetDto>();
             if (res != null)
             {
