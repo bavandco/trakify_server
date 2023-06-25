@@ -9,6 +9,7 @@ namespace Application.Services
 {
     public interface IDashboardServices
     {
+        public List<ThreeParameters> GetThreeParameterOverTime(string signedInUserId);
     }
 
     public class DashboardServices : IDashboardServices
@@ -42,8 +43,8 @@ namespace Application.Services
     public class ThreeParameters
     {
         public DateTime dateTime { get; set; }
-        public int? Happiness;
-        public int? Satisfaction;
-        public int? Health;
+        public int? Happiness { get; set; }
+        public int? Satisfaction { get; set; }
+        public int? Health { get; set; }
     }
 }

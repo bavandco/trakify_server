@@ -21,6 +21,7 @@ builder.Services.AddTransient<UserRepository, UserRepository>();
 builder.Services.AddTransient<UserTokenRepository, UserTokenRepository>();
 builder.Services.AddTransient<ITokenValidator, TokenValidate>();
 builder.Services.AddTransient<INoteServices, NoteServices>();
+builder.Services.AddTransient<IDashboardServices, DashboardServices>();
 builder.Services.AddTransient<IUserServices, UserServices>();
 builder.Services.AddScoped<CreateToken, CreateToken>();
 builder.Services.AddScoped<EmailService, EmailService>();

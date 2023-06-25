@@ -54,3 +54,4 @@ D:\Trackify_Server\Trackify_Server\MainEndpoint\bin\Debug\net6.0\Infrastructure.
 D:\Trackify_Server\Trackify_Server\MainEndpoint\bin\Debug\net6.0\Infrastructure.pdb
 D:\Trackify_Server\Trackify_Server\MainEndpoint\bin\Debug\net6.0\Npgsql.dll
 D:\Trackify_Server\Trackify_Server\MainEndpoint\bin\Debug\net6.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+D:\Trackify_Server\Trackify_Server\MainEndpoint\bin\Debug\net6.0\AutoMapper.dll
