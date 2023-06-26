@@ -9,9 +9,11 @@ namespace MainEndpoint.Controllers
     public class DashboardController : ControllerBase
     {
         private readonly IDashboardServices _dashboardServices;
-        public DashboardController(IDashboardServices _dashboardServices)
+        private readonly IUserServices _userServices;
+        public DashboardController(IDashboardServices _dashboardServices, IUserServices _userServices)
         {
             this._dashboardServices = _dashboardServices;
+            this._userServices = _userServices;
         }
 
 
@@ -42,6 +44,23 @@ namespace MainEndpoint.Controllers
                 return Ok(res);
             }
             return Ok("No Notes");
+
+        }
+
+        [HttpGet]
+        [Route("getUserProfile")]
+        public async Task<IActionResult> GetUserProfile()
+        {
+
+            string userId = User.Claims.FirstOrDefault(c => c.Type == "UserId")?.Value;
+            if (userId == null)
+            {
+                return Unauthorized();
+            }
+            var profile = _userServices.GetUserProfile(userId);
+
+            return Ok(profile);
+
 
         }
 

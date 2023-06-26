@@ -79,12 +79,17 @@ namespace Application.Services
         {
             var user = repo.GetUserProfile(userId);
             var lastNote = noteServices.GetLastUserNote(userId);
-            if (lastNote.CreatedDate < DateTime.Now.AddDays(-1))
+            if(lastNote != null)
             {
-                repo.ZeroOutUserJournalingStreak(userId);
-                return 0;
+                if (lastNote.CreatedDate < DateTime.Now.AddDays(-1))
+                {
+                    repo.ZeroOutUserJournalingStreak(userId);
+                    return 0;
+                }
+                return user.JournalingStreak;
             }
-            return user.JournalingStreak;
+            else { return 0; }
+
         }
 
 

@@ -29,13 +29,27 @@ namespace Application.Services
         }
         public void CreateNote(string title, string text, string userId, int happiness, int satisfaction, int health)
         {
-            if (DateTime.Now > GetLastUserNote(userId).CreatedDate.AddDays(1))
+            if(GetLastUserNote(userId) != null)
             {
-                _userRepo.ZeroOutUserJournalingStreak(userId);
-            }else
+                if (DateTime.Now > GetLastUserNote(userId).CreatedDate.AddDays(2))
+                {
+                    _userRepo.ZeroOutUserJournalingStreak(userId);
+                    _userRepo.IncrementUserJournalingStreak(userId);
+                }
+                else if (DateTime.Now < GetLastUserNote(userId).CreatedDate.AddDays(1))
+                {
+
+                }
+                else if (DateTime.Now < GetLastUserNote(userId).CreatedDate.AddDays(2))
+                {
+                    _userRepo.IncrementUserJournalingStreak(userId);
+                }
+            }
+            else
             {
                 _userRepo.IncrementUserJournalingStreak(userId);
             }
+
             _noteRepo.CreateNote(title,text, userId, happiness, satisfaction, health);
         }
 
@@ -104,7 +118,7 @@ namespace Application.Services
         public GetNoteDto GetLastUserNote(string signedInUserId)
         {
             var notes = _noteRepo.GetAllUserNotes(signedInUserId,1,1).SingleOrDefault();
-            if (notes.UserId == signedInUserId)
+            if (notes!=null&&notes.UserId == signedInUserId)
             {
                 return new GetNoteDto()
                 {
