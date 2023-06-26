@@ -20,10 +20,12 @@ namespace Application.Services
     {
         public static IWebHostEnvironment _env;
         private readonly UserRepository repo;
-        public UserServices(UserRepository repo, IWebHostEnvironment env)
+        private readonly INoteServices noteServices;
+        public UserServices(UserRepository repo, IWebHostEnvironment env, INoteServices noteServices)
         {
             this.repo = repo;
             _env = env;
+            this.noteServices = noteServices;
         }
 
         public string CreateUserProfilePicture(string UserId, IFormFile file)
@@ -73,6 +75,18 @@ namespace Application.Services
             var imageFile = System.IO.File.OpenRead(_env.WebRootPath + image.Src);
             return imageFile;
         }
+        private int CalculateJournalingStreak(string userId)
+        {
+            var user = repo.GetUserProfile(userId);
+            var lastNote = noteServices.GetLastUserNote(userId);
+            if (lastNote.CreatedDate < DateTime.Now.AddDays(-1))
+            {
+                repo.ZeroOutUserJournalingStreak(userId);
+                return 0;
+            }
+            return user.JournalingStreak;
+        }
+
 
         public UserDto GetUserProfile(string userId)
         {
@@ -86,6 +100,7 @@ namespace Application.Services
                 Email = user.Email,
                 Gender = user.Gender,
                 GoogleAuthCode = user.GoogleAuthCode,
+                JournalingStreak =CalculateJournalingStreak(userId)
             };
         }
 
@@ -100,6 +115,7 @@ namespace Application.Services
         public string? GoogleAuthCode { get; set; }
         public UserGender Gender { get; set; }
         public DateTime BirthDate { get; set; }
+        public int JournalingStreak { get; set; }
 
     }
 }

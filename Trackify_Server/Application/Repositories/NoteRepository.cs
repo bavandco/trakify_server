@@ -11,6 +11,7 @@ namespace Application.Repositories
     public class NoteRepository
     {
         private readonly IDatabaseContext context;
+
         public NoteRepository(IDatabaseContext Context)
         {
             context = Context;
@@ -18,6 +19,7 @@ namespace Application.Repositories
 
         public void CreateNote(string title,string text,string userId,int happiness,int satisfaction,int health)
         {
+          
             context.Notes.Add(new Note() {
                 Title=title,Text = text, CreatedAt = DateTime.Now, UserId = userId,
                 Happiness = happiness, Health = health, Satisfaction = satisfaction, UpdatedAt = DateTime.Now

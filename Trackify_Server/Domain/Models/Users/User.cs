@@ -13,6 +13,7 @@ namespace Domain.Models.Users
         public string? GoogleAuthCode { get; set; }
         public UserGender Gender { get; set; }
         public DateTime BirthDate { get; set; }
+        public int JournalingStreak { get; set; }
 
     }
 

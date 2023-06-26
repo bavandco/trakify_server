@@ -34,7 +34,17 @@ namespace Application.Repositories
         {
             return context.UserProfilePictures.SingleOrDefault(p => p.UserId == userId);
         }
+        public void IncrementUserJournalingStreak(string userId)
+        {
+            context.Users.SingleOrDefault(p=>p.Id==userId).JournalingStreak++;
+            context.SaveChanges();
+        }
 
+        public void ZeroOutUserJournalingStreak(string userId)
+        {
+            context.Users.SingleOrDefault(p => p.Id == userId).JournalingStreak = 0;
+            context.SaveChanges();
+        }
         public void RemoveUserProfilePicture(string userId)
         {
             var userpp = context.UserProfilePictures.SingleOrDefault(m => m.UserId == userId);

@@ -13,19 +13,29 @@ namespace Application.Services
         public int DeleteNote(string signedInUserId, Guid noteId);
         public int UpdateNote(string userId, Guid id, string title, string text, int happiness, int satisfaction, int health);
         public GetNoteDto GetNote(string signedInUserId,Guid noteId);
+        public GetNoteDto GetLastUserNote(string signedInUserId);
         public List<GetNoteDto> GetAllUserNotes(string signedInUserId,int pageNumber,int pageSize);
         public List<GetNoteDto> GetNotesBasedOnDateRange(string signedInUserId ,DateTime startingDate,DateTime endingDate, int pageNumber, int pageSize);
     }
     public class NoteServices : INoteServices
     {
         private readonly NoteRepository _noteRepo;
+        private readonly UserRepository _userRepo;
 
-        public NoteServices(NoteRepository _noteRepo)
+        public NoteServices(NoteRepository _noteRepo, UserRepository _userRepo)
         {
             this._noteRepo = _noteRepo;
+            this._userRepo = _userRepo;
         }
         public void CreateNote(string title, string text, string userId, int happiness, int satisfaction, int health)
         {
+            if (DateTime.Now > GetLastUserNote(userId).CreatedDate.AddDays(1))
+            {
+                _userRepo.ZeroOutUserJournalingStreak(userId);
+            }else
+            {
+                _userRepo.IncrementUserJournalingStreak(userId);
+            }
             _noteRepo.CreateNote(title,text, userId, happiness, satisfaction, health);
         }
 
@@ -86,6 +96,27 @@ namespace Application.Services
                     NoteId = note.Id,
                     UpdatedDate = note.UpdatedAt
 
+                };
+            }
+            return null;
+        }
+
+        public GetNoteDto GetLastUserNote(string signedInUserId)
+        {
+            var notes = _noteRepo.GetAllUserNotes(signedInUserId,1,1).SingleOrDefault();
+            if (notes.UserId == signedInUserId)
+            {
+                return new GetNoteDto()
+                {
+                    UserId = notes.UserId,
+                    Text = notes.Text,
+                    Title = notes.Title,
+                    Satisfaction = notes.Satisfaction,
+                    CreatedDate = notes.CreatedAt,
+                    Happiness = notes.Happiness,
+                    Health = notes.Health,
+                    NoteId = notes.Id,
+                    UpdatedDate = notes.UpdatedAt
                 };
             }
             return null;

@@ -57,3 +57,4 @@ D:\Trackify_Server\Trackify_Server\AdminEndpoint\obj\Debug\net6.0\AdminEndpoint.
 D:\Trackify_Server\Trackify_Server\AdminEndpoint\obj\Debug\net6.0\AdminEndpoint.genruntimeconfig.cache
 D:\Trackify_Server\Trackify_Server\AdminEndpoint\bin\Debug\net6.0\Npgsql.dll
 D:\Trackify_Server\Trackify_Server\AdminEndpoint\bin\Debug\net6.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+D:\Trackify_Server\Trackify_Server\AdminEndpoint\bin\Debug\net6.0\AutoMapper.dll
