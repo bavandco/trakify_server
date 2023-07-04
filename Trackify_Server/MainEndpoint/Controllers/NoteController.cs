@@ -141,7 +141,7 @@ namespace MainEndpoint.Controllers
 
         [HttpGet]
         [Route("getallnotesbetweendates")]
-        public async Task<IActionResult> GetAllNotesBetweenDates(NotesGetBetweenDatesDto model)
+        public async Task<IActionResult> GetAllNotesBetweenDates(int pageSize, int pageNumber,DateTime startingDate, DateTime endingDate)
         {
 
             string userId = User.Claims.FirstOrDefault(c => c.Type == "UserId")?.Value;
@@ -149,7 +149,7 @@ namespace MainEndpoint.Controllers
             {
                 return Unauthorized();
             }
-            var res = _noteServices.GetNotesBasedOnDateRange(userId, model.StartingDate, model.EndingDate,model.PageNumber,model.PageSize);
+            var res = _noteServices.GetNotesBasedOnDateRange(userId, startingDate, endingDate,pageNumber,pageSize);
             var result = new List<NoteGetDto>();
             if (res != null)
             {

@@ -4,6 +4,7 @@ D:\Trackify_Server\Trackify_Server\MainEndpoint\obj\Release\net6.0\PubTmp\Out\ap
 D:\Trackify_Server\Trackify_Server\MainEndpoint\obj\Release\net6.0\PubTmp\Out\MainEndpoint.dll
 D:\Trackify_Server\Trackify_Server\MainEndpoint\obj\Release\net6.0\PubTmp\Out\MainEndpoint.runtimeconfig.json
 D:\Trackify_Server\Trackify_Server\MainEndpoint\obj\Release\net6.0\PubTmp\Out\MainEndpoint.pdb
+D:\Trackify_Server\Trackify_Server\MainEndpoint\obj\Release\net6.0\PubTmp\Out\AutoMapper.dll
 D:\Trackify_Server\Trackify_Server\MainEndpoint\obj\Release\net6.0\PubTmp\Out\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 D:\Trackify_Server\Trackify_Server\MainEndpoint\obj\Release\net6.0\PubTmp\Out\Microsoft.AspNetCore.Cryptography.Internal.dll
 D:\Trackify_Server\Trackify_Server\MainEndpoint\obj\Release\net6.0\PubTmp\Out\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll

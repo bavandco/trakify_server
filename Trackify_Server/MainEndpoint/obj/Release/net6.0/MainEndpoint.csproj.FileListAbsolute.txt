@@ -54,3 +54,4 @@ D:\Trackify_Server\Trackify_Server\MainEndpoint\obj\Release\net6.0\MainEndpoint.
 D:\Trackify_Server\Trackify_Server\MainEndpoint\obj\Release\net6.0\ref\MainEndpoint.dll
 D:\Trackify_Server\Trackify_Server\MainEndpoint\obj\Release\net6.0\MainEndpoint.pdb
 D:\Trackify_Server\Trackify_Server\MainEndpoint\obj\Release\net6.0\MainEndpoint.genruntimeconfig.cache
+D:\Trackify_Server\Trackify_Server\MainEndpoint\bin\Release\net6.0\AutoMapper.dll
