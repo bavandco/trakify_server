@@ -13,7 +13,7 @@ namespace Application.Services
         public int DeleteNote(string signedInUserId, Guid noteId);
         public int UpdateNote(string userId, Guid id, string title, string text, int happiness, int satisfaction, int health);
         public GetNoteDto GetNote(string signedInUserId,Guid noteId);
-        public GetNoteDto GetLastUserNote(string signedInUserId);
+        public DateTime GetLastUserNoteDatePlus2Days(string signedInUserId);
         public List<GetNoteDto> GetAllUserNotes(string signedInUserId,int pageNumber,int pageSize);
         public List<GetNoteDto> GetNotesBasedOnDateRange(string signedInUserId ,DateTime startingDate,DateTime endingDate, int pageNumber, int pageSize);
     }
@@ -29,18 +29,18 @@ namespace Application.Services
         }
         public void CreateNote(string title, string text, string userId, int happiness, int satisfaction, int health)
         {
-            if(GetLastUserNote(userId) != null)
+            if (GetLastUserNoteDatePlus2Days(userId) != DateTime.MinValue)
             {
-                if (DateTime.Now > GetLastUserNote(userId).CreatedDate.AddDays(2))
+                if (DateTime.Now > GetLastUserNoteDatePlus2Days(userId))
                 {
                     _userRepo.ZeroOutUserJournalingStreak(userId);
                     _userRepo.IncrementUserJournalingStreak(userId);
                 }
-                else if (DateTime.Now < GetLastUserNote(userId).CreatedDate.AddDays(1))
+                else if (DateTime.Now < GetLastUserNoteDatePlus2Days(userId))
                 {
 
                 }
-                else if (DateTime.Now < GetLastUserNote(userId).CreatedDate.AddDays(2))
+                else if (DateTime.Now < GetLastUserNoteDatePlus2Days(userId))
                 {
                     _userRepo.IncrementUserJournalingStreak(userId);
                 }
@@ -115,25 +115,14 @@ namespace Application.Services
             return null;
         }
 
-        public GetNoteDto GetLastUserNote(string signedInUserId)
+        public DateTime GetLastUserNoteDatePlus2Days(string signedInUserId)
         {
             var notes = _noteRepo.GetAllUserNotes(signedInUserId,1,1).SingleOrDefault();
             if (notes!=null&&notes.UserId == signedInUserId)
             {
-                return new GetNoteDto()
-                {
-                    UserId = notes.UserId,
-                    Text = notes.Text,
-                    Title = notes.Title,
-                    Satisfaction = notes.Satisfaction,
-                    CreatedDate = notes.CreatedAt,
-                    Happiness = notes.Happiness,
-                    Health = notes.Health,
-                    NoteId = notes.Id,
-                    UpdatedDate = notes.UpdatedAt
-                };
+                return notes.CreatedAt.AddDays(2);
             }
-            return null;
+            return DateTime.MinValue;
         }
 
         public List<GetNoteDto> GetNotesBasedOnDateRange(string signedInUserId, DateTime startingDate, DateTime endingDate, int pageNumber, int pageSize)

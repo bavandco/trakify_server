@@ -53,7 +53,7 @@ namespace Application.Repositories
 
         public List<Note> GetAllUserNotes(string userId,int pageNumber,int pageSize)
         {
-            return context.Notes.Where(p => p.UserId == userId).Skip(pageNumber-1).Take(pageSize).ToList();
+            return context.Notes.Where(p => p.UserId == userId).OrderByDescending(p=>p.CreatedAt).Skip(pageNumber-1).Take(pageSize).ToList();
         }
 
 

@@ -78,10 +78,10 @@ namespace Application.Services
         private int CalculateJournalingStreak(string userId)
         {
             var user = repo.GetUserProfile(userId);
-            var lastNote = noteServices.GetLastUserNote(userId);
-            if(lastNote != null)
+            var lastNoteDatePlus2Days = noteServices.GetLastUserNoteDatePlus2Days(userId);
+            if(lastNoteDatePlus2Days != DateTime.MinValue)
             {
-                if (lastNote.CreatedDate < DateTime.Now.AddDays(-1))
+                if (lastNoteDatePlus2Days.AddDays(-2) < DateTime.Now.AddDays(-1))
                 {
                     repo.ZeroOutUserJournalingStreak(userId);
                     return 0;

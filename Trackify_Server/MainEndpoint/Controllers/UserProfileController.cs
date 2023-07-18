@@ -27,8 +27,6 @@ namespace MainEndpoint.Controllers
                 return Unauthorized();
             }
             return Ok(_userServices.CreateUserProfilePicture(userId, file));
-           
-
         }
 
         [HttpGet]
